@@ -2,7 +2,7 @@ html {
     box-sizing: border-box;
     font-size: 65.5%;
     scroll-behavior: smooth;
-  }
+    }
   
   *,
   *:before,
@@ -59,8 +59,4 @@ html {
   ul{
     list-style: none;
   }
- .container{
-    max-width: 1200px;
-    margin:0 auto 0 auto;
-    width: 90%; 
- }
+ 

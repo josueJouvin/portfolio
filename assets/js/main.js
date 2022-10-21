@@ -12,7 +12,6 @@ navClose.addEventListener('click', () =>{
 })
 
 //Remove menu mobile
-
 let navLink = document.querySelectorAll('.nav__link')
 
 const linkAction = () =>{ 
@@ -52,16 +51,6 @@ let mixerPortfolio = mixitup('.work__container',{
     }
 })
 
-//ACTIVE LINK
-const linkWork = document.querySelectorAll('.work__item');
-
-function activateWork() {
-    linkWork.forEach(link => link.classList.remove('active-work'))
-    this.classList.add('active-work')
-}
-linkWork.forEach(link => link.addEventListener('click', activateWork))
-
-
 
 //DARK MODE
 const themeButton = document.getElementById('theme-button')
@@ -92,3 +81,32 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+
+/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
+const sections = document.querySelectorAll('section[id]')
+
+function scrollActive(){
+    const scrollY = window.pageYOffset
+
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+        }
+    })
+}
+window.addEventListener('scroll', scrollActive)
+
+/*==================== CHANGE BACKGROUND HEADER ====================*/ 
+function scrollHeader(){
+    const nav = document.getElementById('header')
+    // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
+    if(this.scrollY >= 80) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
+}
+window.addEventListener('scroll', scrollHeader)
